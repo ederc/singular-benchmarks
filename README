@@ -1,0 +1,5 @@
+This repository contains a SINGULAR library, which collects several, mostly 
+well-known benchmarks in the area of Groebner basis computations.
+
+Besides this, an example singularrc file is given, which illustrates the usage 
+of the benchs.lib file in your SINGULAR session.

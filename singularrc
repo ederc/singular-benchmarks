@@ -1,0 +1,13 @@
+system("--min-time", "0.001");
+system("--ticks-per-sec", 1000);
+option(noredefine);
+LIB"benchs.lib";
+
+string bench = katsuranh(10);
+sprintf(bench);
+int t = timer;
+sprintf("--- sba(noninc,arri) computing ---");
+ideal f = sba(i,0,1);
+printf("Size of basis:    %s",size(f));
+printf("Time:             %s", timer-t);
+$
