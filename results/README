@@ -1,0 +1,21 @@
+The files in this folder are named by the given benchmark, see benchs.lib for 
+more details on characteristic, ordering, variables.
+File names ending with an "h" denote the homogenized versions of the
+respective benchmark.
+
+The files include data sets of computations with
+--------------------------------------------
+1. incremental sba using F5's criteria
+2. incremental sba using Arri's critiera
+3. non-incremental sba using F5's criteria
+4. non-incremental sba using Arri's criteria
+--------------------------------------------
+
+All computations were done on a compute server with the following 
+specifications:
+----------------------------------------------------
+- 2.6.31-gentoo-r6 GNU/Linux 64-bit operating system
+- INTEL XEON X5460 at 3.16 GHz processor
+- 64 GB RAM
+- 128 GB swap space
+----------------------------------------------------
