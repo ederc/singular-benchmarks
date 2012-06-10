@@ -1012,6 +1012,152 @@ proc cyclicnhlp(int z)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+proc xia(int n)
+{
+   int m = n;
+   if (m % 2 != 0)
+   {
+     print("m is not even!");
+    string bench = "XIA-FAILED-DUE-TO-ODD-M-AS-INPUT";
+    return (bench);
+   }
+   ring R = 0,(x(0..(m))),dp;
+   ideal i;
+   m;
+   int z = m div 2;
+   z = z-1;
+   z;
+   int ctr = 1;
+   int l;
+   // equations part 1 in xia preprint
+   for (int j=1; j<=z; j++)
+   {
+      i[ctr] = 0;
+      for (int k=1; k<=(2*j-1); k++)
+      {
+       l = 2*j - k;
+       i[ctr] = i[ctr] + x(k)*x(l);
+      }
+      for (int k=(2*j); k<=m; k++)
+      {
+       l = 2*j + m - k;
+       i[ctr] = i[ctr] + x(k)*x(l);
+      }
+      ctr++;
+    }
+   // equations part 2 in xia preprint
+   for (int j=1; j<=z; j++)
+   {
+      l = m-j;
+      i[ctr] = x(j)*x(l) -1;
+      ctr++;
+   }
+
+   // equations part 3 in xia preprint
+   l = z+1;
+   i[ctr] = x(l)-1;
+   ctr++;
+
+   // equations part 4 in xia preprint
+   for (int j=1; j<=z; j++)
+   {
+      l = z+1+j;
+      i[ctr] = x(0)^j*x(j)*x(l);
+      l = 2*j;
+      i[ctr] = i[ctr] - x(l);
+      ctr++;
+   }
+
+   // equations part 5 on xia preprint
+   l = z+1;
+   i[ctr] = x(0)^l -1;
+
+   string bench = "XIA-"+string(m)+"-DP";
+   export(R);
+   export(i);
+   return(bench);
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+proc xia(int n, list #)
+{
+   int m = n;
+   if (size(#)>0)
+   {
+      string ord_str = #[1];
+   }
+   else
+   {
+     string ord_str = "lp";
+   }
+   if (m % 2 != 0)
+   {
+     print("m is not even!");
+    string bench = "XIA-FAILED-DUE-TO-ODD-M-AS-INPUT";
+    return (bench);
+   }
+   execute("ring R = (0),(x(0..("+string(m)+"))),"+ord_str+";");
+   ideal i;
+   m;
+   int z = m div 2;
+   z = z-1;
+   z;
+   int ctr = 1;
+   int l;
+   // equations part 1 in xia preprint
+   for (int j=1; j<=z; j++)
+   {
+      i[ctr] = 0;
+      for (int k=1; k<=(2*j-1); k++)
+      {
+       l = 2*j - k;
+       i[ctr] = i[ctr] + x(k)*x(l);
+      }
+      for (int k=(2*j); k<=m; k++)
+      {
+       l = 2*j + m - k;
+       i[ctr] = i[ctr] + x(k)*x(l);
+      }
+      ctr++;
+    }
+   // equations part 2 in xia preprint
+   for (int j=1; j<=z; j++)
+   {
+      l = m-j;
+      i[ctr] = x(j)*x(l) -1;
+      ctr++;
+   }
+
+   // equations part 3 in xia preprint
+   l = z+1;
+   i[ctr] = x(l)-1;
+   ctr++;
+
+   // equations part 4 in xia preprint
+   for (int j=1; j<=z; j++)
+   {
+      l = z+1+j;
+      i[ctr] = x(0)^j*x(j)*x(l);
+      l = 2*j;
+      i[ctr] = i[ctr] - x(l);
+      ctr++;
+   }
+
+   // equations part 5 on xia preprint
+   l = z+1;
+   i[ctr] = x(0)^l -1;
+
+   string bench = "XIA-"+string(m)+"-"+ord_str;
+   export(R);
+   export(i);
+   return(bench);
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 proc econ(int n) {
 
   int z = n-1;
