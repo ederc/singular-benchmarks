@@ -1031,22 +1031,20 @@ proc xia(int n, list #)
    }
    execute("ring R = (0),(x(0..("+string(m)+"))),"+ord_str+";");
    ideal i;
-   m;
    int z = m div 2;
    z = z-1;
-   z;
    int ctr = 1;
-   int l;
+   int j,k,l;
    // equations part 1 in xia preprint
-   for (int j=1; j<=z; j++)
+   for (j=1; j<=z; j++)
    {
       i[ctr] = 0;
-      for (int k=1; k<=(2*j-1); k++)
+      for (k=1; k<=(2*j-1); k++)
       {
        l = 2*j - k;
        i[ctr] = i[ctr] + x(k)*x(l);
       }
-      for (int k=(2*j); k<=m; k++)
+      for (k=(2*j); k<=m; k++)
       {
        l = 2*j + m - k;
        i[ctr] = i[ctr] + x(k)*x(l);
@@ -1054,7 +1052,7 @@ proc xia(int n, list #)
       ctr++;
     }
    // equations part 2 in xia preprint
-   for (int j=1; j<=z; j++)
+   for (j=1; j<=z; j++)
    {
       l = m-j;
       i[ctr] = x(j)*x(l) -1;
@@ -1067,7 +1065,7 @@ proc xia(int n, list #)
    ctr++;
 
    // equations part 4 in xia preprint
-   for (int j=1; j<=z; j++)
+   for (j=1; j<=z; j++)
    {
       l = z+1+j;
       i[ctr] = x(0)^j*x(j)*x(l);
