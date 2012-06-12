@@ -1029,12 +1029,24 @@ proc xia(int n, list #)
     string bench = "XIA-FAILED-DUE-TO-ODD-M-AS-INPUT";
     return (bench);
    }
+   //execute("ring R = (0),(x(0..("+string(m)+"))), wp(1015, 2208, 39, 
+   //40, 1348, 2167, 1888, 1, 4571, 2109, 2831, 2328, 1824, 2947, 
+   //75);");
    execute("ring R = (0),(x(0..("+string(m)+"))),"+ord_str+";");
    ideal i;
    int z = m div 2;
    z = z-1;
    int ctr = 1;
    int j,k,l;
+   // equations part 3 in xia preprint
+   l = z+1;
+   i[ctr] = x(l)-1;
+   ctr++;
+
+   // equations part 5 on xia preprint
+   l = z+1;
+   i[ctr] = x(0)^l -1;
+
    // equations part 1 in xia preprint
    for (j=1; j<=z; j++)
    {
@@ -1059,11 +1071,6 @@ proc xia(int n, list #)
       ctr++;
    }
 
-   // equations part 3 in xia preprint
-   l = z+1;
-   i[ctr] = x(l)-1;
-   ctr++;
-
    // equations part 4 in xia preprint
    for (j=1; j<=z; j++)
    {
@@ -1073,10 +1080,6 @@ proc xia(int n, list #)
       i[ctr] = i[ctr] - x(l);
       ctr++;
    }
-
-   // equations part 5 on xia preprint
-   l = z+1;
-   i[ctr] = x(0)^l -1;
 
    string bench = "XIA-"+string(m)+"-"+ord_str;
    export(R);
